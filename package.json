@@ -1,0 +1,55 @@
+{
+  "name": "coordinagent",
+  "version": "1.0.0",
+  "description": "Coordinagent: User-friendly, cutting-edge CRM for real estate success.",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm exec webpack serve --config config/webpack.dev.js --progress --host 0.0.0.0 --port 3000",
+    "clean": "rimraf dist && rimraf .awcache",
+    "purge": "pnpm prune --production",
+    "build": "pnpm clean && webpack --config config/webpack.prod.js",
+    "build:prod": "pnpm clean && webpack --config config/webpack.prod.js",
+    "build:dev": "pnpm clean && webpack --config config/webpack.dev.js --progress",
+    "build:main": "pnpm clean && webpack --config config/webpack.master.js",
+    "upgrade": "pnpm dlx npm-check-updates -u && pnpm install",
+    "lint": "eslint ./src/"
+  },
+  "keywords": [
+    "CRM",
+    "Real Estate"
+  ],
+  "author": "Winning Wizard Technologies Inc.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@9.7.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2"
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
+    "esbuild-loader": "^4.2.2",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "html-webpack-plugin": "^5.6.0",
+    "rimraf": "^6.0.1",
+    "style-loader": "^4.0.0",
+    "typescript": "^5.5.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^6.0.1"
+  }
+}
