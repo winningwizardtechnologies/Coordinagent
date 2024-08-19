@@ -8,11 +8,13 @@ type NavItemProps = {
   text: string;
   link: string;
   active: boolean;
+  size: 'normal' | 'small';
 };
 export const NavItem: React.FC<NavItemProps> = ({
   icon,
   text,
   link,
+  size,
   active
 }) => {
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         iconName={icon}
         styles={{
           root: {
-            fontSize: '32px',
+            fontSize: size === 'normal' ? '32px' : '24px',
             color: active ? colors.green : colors.grayDark,
             fontWeight: active ? 'bold' : 'normal'
           }
@@ -45,7 +47,8 @@ export const NavItem: React.FC<NavItemProps> = ({
           root: {
             cursor: 'inherit',
             color: active ? colors.green : colors.grayDark,
-            fontWeight: active ? 'bold' : 'normal'
+            fontWeight: active ? 'bold' : 'normal',
+            fontSize: size === 'normal' ? '14px' : '12px'
           }
         }}
       >
