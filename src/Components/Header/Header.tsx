@@ -10,11 +10,14 @@ import { NavItem } from './NavItem';
 import { useMatch, useNavigate } from 'react-router-dom';
 import { colors } from '../../Constants/colors';
 import { useScreenSize } from '../../Hooks/useScreenSize';
+import { useAppSelector } from '../../Hooks/useAppRedux';
+import { getInitials } from '../../Utility/contactUtil';
 
 export const Header: React.FC = () => {
   const scSize = useScreenSize();
   const navigate = useNavigate();
-  const match = useMatch('/:path');
+  const match = useMatch('/:pathname/*');
+  const account = useAppSelector((state) => state.account);
   return (
     <Stack
       horizontal
@@ -56,21 +59,21 @@ export const Header: React.FC = () => {
             text='Contacts'
             link='/contacts'
             size='normal'
-            active={match?.pathname === '/contacts'}
+            active={match?.pathname?.includes('/contacts') === true}
           />
           <NavItem
             icon='GroupedList'
             text='Tasks'
             link='/tasks'
             size='normal'
-            active={match?.pathname === '/tasks'}
+            active={match?.pathname?.includes('/tasks') === true}
           />
           <NavItem
             icon='RealEstate'
             text='Deals'
             link='/deals'
             size='normal'
-            active={match?.pathname === '/deals'}
+            active={match?.pathname?.includes('/deals') === true}
           />
         </Stack>
       )}
@@ -102,7 +105,7 @@ export const Header: React.FC = () => {
           {/* load correct initial from account */}
           <Persona
             size={PersonaSize.size48}
-            imageInitials='JK'
+            imageInitials={getInitials(account.firstName, account.lastName)}
             styles={{ root: { cursor: 'pointer', width: '48px' } }}
             initialsColor={colors.grayDark}
           />

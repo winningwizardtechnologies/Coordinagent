@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../Header/Header';
 import { MobileNav } from '../Header/MobileNav';
 import { useScreenSize } from '../../Hooks/useScreenSize';
+import { ErrorContent } from '../Error-Parts/ErrorContent';
 
 export const Error: React.FC = () => {
   React.useEffect(() => {
@@ -11,13 +12,7 @@ export const Error: React.FC = () => {
   return (
     <>
       <Header />
-      <div
-        style={{
-          minHeight: `calc(100vh - ${scSize.width <= 850 ? '196px' : '121px'})`
-        }}
-      >
-        Error 404 not found
-      </div>
+      <ErrorContent />
       {scSize.width <= 850 && <MobileNav />}
     </>
   );
