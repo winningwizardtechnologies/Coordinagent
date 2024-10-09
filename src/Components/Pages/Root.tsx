@@ -14,7 +14,7 @@ export const Root: React.FC = () => {
       <Header />
       <div
         style={{
-          minHeight: `calc(100vh - ${scSize.width <= 850 ? '196px' : '121px'})`
+          height: `calc(100vh - ${scSize.width < 375 ? '215px' : scSize.width <= 850 ? '241px' : '166px'})`
         }}
       >
         <Outlet />

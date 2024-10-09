@@ -6,6 +6,7 @@ import { Tasks } from './Components/Pages/Tasks';
 import { Deals } from './Components/Pages/Deals';
 import { Error } from './Components/Pages/Error';
 import { Home } from './Components/Pages/Home';
+import { ErrorContent } from './Components/Error-Parts/ErrorContent';
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,10 @@ const router = createBrowserRouter([
         element: <Home />
       },
       { path: '/contacts', element: <Contacts /> },
+      { path: '/contacts/:id', element: <Contacts /> },
       { path: '/tasks', element: <Tasks /> },
-      { path: '/deals', element: <Deals /> }
+      { path: '/deals', element: <Deals /> },
+      { path: '/404', element: <ErrorContent /> }
     ]
   }
 ]);

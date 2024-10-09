@@ -25,7 +25,6 @@ module.exports = merge(commonConfig, {
     open: true
   },
   optimization: {
-    // for hot module replacement
     runtimeChunk: 'single'
   },
   performance: {

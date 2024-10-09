@@ -4,6 +4,10 @@
 }
 
 .navItem:hover {
-  background-color: lightgray;
+  background-color: #f3f2f1;
   cursor: pointer;
+}
+
+.addFilters:hover {
+  background-color: red;
 }

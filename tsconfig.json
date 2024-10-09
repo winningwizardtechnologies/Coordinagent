@@ -16,7 +16,7 @@
     "noUnusedParameters": false,
     "noUnusedLocals": false,
     "pretty": true,
-    "lib": ["ES7", "DOM"],
+    "lib": ["ES7", "DOM", "es2017"],
     "typeRoots": ["node_modules/@types"]
   },
   "exclude": ["node_modules"],
