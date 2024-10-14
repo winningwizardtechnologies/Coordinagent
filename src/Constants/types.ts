@@ -9,6 +9,8 @@ export type StageType =
   | 'Property Maintenance'
   | 'Account';
 
+export type NotificationStatus = 'read' | 'unread';
+
 export type Contact = {
   id: string;
   firstName: string;
@@ -19,4 +21,12 @@ export type Contact = {
   address: string;
   stage: StageType;
   image?: string;
+};
+
+export type CustomNotification = {
+  id: string;
+  date: string;
+  status: NotificationStatus;
+  text: string;
+  actionUrl: string;
 };

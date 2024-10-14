@@ -1,4 +1,4 @@
-import { Contact } from './types';
+import { Contact, CustomNotification } from './types';
 
 export const mockContacts: Contact[] = [
   {
@@ -100,5 +100,127 @@ export const mockContacts: Contact[] = [
     dob: '1999-09-09',
     address: '123-Water Street, Vancouver, BC, Canada, V5Y 2V1',
     stage: 'Hot Lead'
+  }
+];
+
+export const mockNotifications: CustomNotification[] = [
+  {
+    id: '1',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Jenson Guo',
+    actionUrl: '/'
+  },
+  {
+    id: '2',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Hetal',
+    actionUrl: '/'
+  },
+  {
+    id: '3',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Jason',
+    actionUrl: '/'
+  },
+  {
+    id: '4',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Andrea',
+    actionUrl: '/'
+  },
+  {
+    id: '5',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Mark',
+    actionUrl: '/'
+  },
+  {
+    id: '6',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Anthony',
+    actionUrl: '/'
+  },
+  {
+    id: '7',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Timothy',
+    actionUrl: '/'
+  },
+  {
+    id: '8',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Tile',
+    actionUrl: '/'
+  },
+  {
+    id: '9',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Will',
+    actionUrl: '/'
+  },
+  {
+    id: '10',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Tara',
+    actionUrl: '/'
+  },
+  {
+    id: '11',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Raymond who actually has a huge text to deal with not sure what we gonna do hahahahahha hah',
+    actionUrl: '/'
+  },
+  {
+    id: '12',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Jacob',
+    actionUrl: '/'
+  },
+  {
+    id: '13',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead Jeff',
+    actionUrl: '/'
+  },
+  {
+    id: '14',
+    date: '1 day ago',
+    status: 'unread',
+    text: 'Follow up with new hot lead John',
+    actionUrl: '/'
+  },
+  {
+    id: '15',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Brian',
+    actionUrl: '/'
+  },
+  {
+    id: '16',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Jordan',
+    actionUrl: '/'
+  },
+  {
+    id: '17',
+    date: '1 day ago',
+    status: 'read',
+    text: 'Follow up with new hot lead Jamey',
+    actionUrl: '/'
   }
 ];
