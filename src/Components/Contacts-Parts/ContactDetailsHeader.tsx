@@ -89,7 +89,6 @@ export const ContactDetailsHeader: React.FC<{
           ref={hiddenFileInput}
           accept='image/*,image/heic'
           onChange={(ev) => {
-            console.log('happen');
             const newFile = ev?.target?.files?.[0];
             if (newFile) {
               if (newFile.size > 10485760) {
