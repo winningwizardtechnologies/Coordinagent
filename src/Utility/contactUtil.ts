@@ -1,14 +1,10 @@
-export const getContactFullName = (
-  firstName: string,
-  lastName = '',
-  isUserContact = false
-) => {
-  if (lastName) {
-    return !isUserContact
-      ? firstName + ' ' + lastName
-      : firstName + ' ' + lastName + ' (You)';
+export const getContactFullName = (firstName: string, lastName = '') => {
+  if (firstName && lastName) {
+    return firstName + ' ' + lastName;
+  } else if (firstName) {
+    return firstName;
   } else {
-    return !isUserContact ? firstName : firstName + ' (You)';
+    return '';
   }
 };
 

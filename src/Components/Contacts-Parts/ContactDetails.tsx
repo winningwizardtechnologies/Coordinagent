@@ -30,17 +30,15 @@ export const ContactDetails: React.FC = () => {
   const dispatch = useAppDispatch();
   const scSize = useScreenSize();
   const match = useMatch('/contacts/:id');
-  const account = useAppSelector((state) => state.account);
   const contacts = useAppSelector((state) => state.contacts.contacts);
 
   const contact = React.useMemo(() => {
-    const allContacts = [account, ...contacts];
     return (
-      allContacts.find((contact) => {
+      contacts.find((contact) => {
         return contact.id === match?.params?.id;
       }) || ({} as Contact)
     );
-  }, [account, contacts, match?.params?.id]);
+  }, [contacts, match?.params?.id]);
 
   const [editMode, setEditMode] = React.useState(false);
   const [isSaving, setIsSaving] = React.useState(false);
@@ -69,12 +67,7 @@ export const ContactDetails: React.FC = () => {
     }
   }, [match?.params?.id]);
 
-  const isUserAccount = contact.stage === 'Account';
-  const fullname = getContactFullName(
-    contact.firstName || '',
-    contact.lastName,
-    isUserAccount
-  );
+  const fullname = getContactFullName(contact.firstName, contact.lastName);
 
   const horizontalView = scSize.width >= 1024;
   const leftColStyle = { root: { width: horizontalView ? '45%' : '100%' } };
@@ -156,12 +149,11 @@ export const ContactDetails: React.FC = () => {
               formHasErrors={errors.fname.length > 0 || errors.email.length > 0}
               persona={{
                 name: fullname,
-                stage: isUserAccount ? '' : contact.stage,
+                stage: contact.stage,
                 image: localContact.image
               }}
               editMode={editMode}
               isSaving={isSaving}
-              hideDropdown={isUserAccount}
               dropDownKey={localContact.stage}
               onEdit={() => {
                 setEditMode(true);
@@ -191,16 +183,12 @@ export const ContactDetails: React.FC = () => {
                   setErrors({ ...emptyErrors });
                   setIsSaving(true);
                   setTimeout(() => {
-                    if (isUserAccount) {
-                      dispatch(changeAccountDetails({ ...localContact }));
-                    } else {
-                      dispatch(
-                        changeContactDetails({
-                          contactId: contact.id,
-                          details: { ...localContact }
-                        })
-                      );
-                    }
+                    dispatch(
+                      changeContactDetails({
+                        contactId: contact.id,
+                        details: { ...localContact }
+                      })
+                    );
                     setEditMode(false);
                     setIsSaving(false);
                   }, 2000);

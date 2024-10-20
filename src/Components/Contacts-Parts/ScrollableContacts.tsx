@@ -12,7 +12,6 @@ export const ScrollableContacts: React.FC = () => {
   const searchTerm = useAppSelector((state) => state.contacts.searchTerm);
   const filters = useAppSelector((state) => state.contacts.selectedFilters);
   const contacts = useAppSelector((state) => state.contacts.contacts);
-  const account = useAppSelector((state) => state.account);
   const initContacts = contacts.map((contact) => {
     return {
       ...contact,
@@ -21,16 +20,8 @@ export const ScrollableContacts: React.FC = () => {
   });
   const [filteredContacts, setFilteredContacts] =
     React.useState<(Contact & { bg: string })[]>(initContacts);
-  const [userContact, setUserContact] = React.useState({
-    ...account,
-    bg: match?.params?.id === account.id ? colors.grayLight : 'none'
-  });
 
   React.useEffect(() => {
-    setUserContact({
-      ...userContact,
-      bg: userContact.id === match?.params?.id ? colors.grayLight : 'none'
-    });
     setFilteredContacts(
       filteredContacts.map((contact) => {
         if (contact.id === match?.params?.id) {
@@ -70,14 +61,10 @@ export const ScrollableContacts: React.FC = () => {
     );
   }, [contacts]);
 
-  React.useEffect(() => {
-    setUserContact({ ...account, bg: userContact.bg });
-  }, [account]);
-
   return (
     <div style={{ overflow: 'auto' }}>
       <List
-        items={[userContact, ...filteredContacts]}
+        items={filteredContacts}
         onRenderCell={(item) => {
           if (item) {
             return (
@@ -95,22 +82,14 @@ export const ScrollableContacts: React.FC = () => {
                 }}
               >
                 <Persona
-                  text={getContactFullName(
-                    item.firstName,
-                    item.lastName,
-                    item.id === userContact.id
-                  )}
-                  secondaryText={item.stage === 'Account' ? '' : item.stage}
+                  text={getContactFullName(item.firstName, item.lastName)}
+                  secondaryText={item.stage}
                   size={PersonaSize.size48}
                   initialsColor={colors.golden}
                   onRenderPrimaryText={() => {
                     return (
                       <span style={{ fontSize: '16px' }}>
-                        {getContactFullName(
-                          item.firstName,
-                          item.lastName,
-                          item.id === userContact.id
-                        )}
+                        {getContactFullName(item.firstName, item.lastName)}
                       </span>
                     );
                   }}

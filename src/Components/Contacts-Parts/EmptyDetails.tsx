@@ -17,14 +17,6 @@ export const EmptyDetails: React.FC = () => {
       <span style={{ fontSize: '18px' }}>
         Select a contact to edit/view their information
       </span>
-      <ActionButton
-        styles={{ root: { color: colors.green } }}
-        onClick={() => {
-          navigate(`/contacts/${account.id}`);
-        }}
-      >
-        View My Account
-      </ActionButton>
     </Stack>
   );
 };

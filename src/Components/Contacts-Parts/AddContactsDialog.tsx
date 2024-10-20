@@ -55,7 +55,7 @@ export const AddContactsDialog: React.FC = () => {
     lname: string;
     email: string;
     phone: string;
-    stage: StageType | '';
+    stage: StageType;
     dob: string;
     address: string;
     file?: File;
@@ -109,7 +109,7 @@ export const AddContactsDialog: React.FC = () => {
             firstName: formData.fname,
             lastName: formData.lname,
             phone: formData.phone,
-            stage: formData.stage || 'Account'
+            stage: formData.stage
             // image: 'file name'
           })
         );

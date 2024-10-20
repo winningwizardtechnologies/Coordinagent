@@ -19,7 +19,6 @@ export const ContactDetailsHeader: React.FC<{
   persona: { name: string; stage: string; image?: string };
   editMode: boolean;
   isSaving: boolean;
-  hideDropdown: boolean;
   formHasErrors: boolean;
   dropDownKey: StageType;
   onDropDownSelect: (option: string) => void;
@@ -167,25 +166,23 @@ export const ContactDetailsHeader: React.FC<{
             </div>
           </>
         )}
-        {!props.hideDropdown && (
-          <Dropdown
-            required={props.editMode}
-            selectedKey={props.dropDownKey}
-            disabled={!props.editMode || props.isSaving}
-            onChange={(_ev, option) => {
-              if (option) {
-                props.onDropDownSelect(option.text);
-              }
-            }}
-            options={stageDropdownOptions}
-            calloutProps={{ directionalHintFixed: true }}
-            styles={{
-              root: {
-                maxWidth: scSize.width <= 800 ? '100%' : '175px'
-              }
-            }}
-          />
-        )}
+        <Dropdown
+          required={props.editMode}
+          selectedKey={props.dropDownKey}
+          disabled={!props.editMode || props.isSaving}
+          onChange={(_ev, option) => {
+            if (option) {
+              props.onDropDownSelect(option.text);
+            }
+          }}
+          options={stageDropdownOptions}
+          calloutProps={{ directionalHintFixed: true }}
+          styles={{
+            root: {
+              maxWidth: scSize.width <= 800 ? '100%' : '175px'
+            }
+          }}
+        />
       </Stack>
     </Stack>
   );
