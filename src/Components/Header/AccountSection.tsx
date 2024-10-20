@@ -11,6 +11,7 @@ import { useScreenSize } from '../../Hooks/useScreenSize';
 import { getContactFullName, getInitials } from '../../Utility/contactUtil';
 import { colors } from '../../Constants/colors';
 import { useAppSelector } from '../../Hooks/useAppRedux';
+import { ImagePersona } from '../Universal/ImagePersona';
 
 export const AccountSection: React.FC<{
   open: boolean;
@@ -34,7 +35,6 @@ export const AccountSection: React.FC<{
       >
         <FocusTrapZone isClickableOutsideFocusTrap>
           <Stack
-            horizontal
             verticalAlign='center'
             styles={{
               root: {
@@ -43,32 +43,20 @@ export const AccountSection: React.FC<{
               }
             }}
           >
-            <Persona
+            <ImagePersona
+              text={getContactFullName(account.firstName, account.lastName)}
+              secondaryText={account.email}
               size={PersonaSize.size72}
-              imageInitials={getInitials(account.firstName, account.lastName)}
-              styles={{ root: { cursor: 'pointer', width: '48px' } }}
               initialsColor={colors.grayDark}
-            />
-            <Stack
-              tokens={{ childrenGap: 5 }}
+              imageInitials={getInitials(account.firstName, account.lastName)}
               styles={{
-                root: {
-                  marginLeft: '20px',
-                  overflow: 'hidden'
-                }
+                primaryText: {
+                  fontWeight: '700',
+                  marginBottom: '3px'
+                },
+                secondaryText: { fontSize: '13.5px' }
               }}
-            >
-              <div style={{ fontWeight: 700, fontSize: '19px' }}>
-                {getContactFullName(account.firstName, account.lastName)}
-              </div>
-              <div
-                style={{
-                  fontSize: '13px'
-                }}
-              >
-                {account.email}
-              </div>
-            </Stack>
+            />
           </Stack>
         </FocusTrapZone>
       </Callout>

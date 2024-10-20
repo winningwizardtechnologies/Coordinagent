@@ -19,7 +19,7 @@ export const isEmailValid = (email: string) => {
   );
 };
 
-export const getInitials = (firstName: string, lastName = '') => {
+export const getInitials = (firstName?: string, lastName?: string) => {
   const firstInitialExists = firstName && firstName[0];
   const lastInitialExists = lastName && lastName[0];
   return firstInitialExists && lastInitialExists

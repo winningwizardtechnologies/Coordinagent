@@ -2,7 +2,6 @@ import {
   ActionButton,
   Dropdown,
   Icon,
-  Persona,
   PersonaSize,
   PrimaryButton,
   Spinner,
@@ -13,7 +12,7 @@ import { useScreenSize } from '../../Hooks/useScreenSize';
 import { colors } from '../../Constants/colors';
 import { StageType } from '../../Constants/types';
 import { errorStyle, stageDropdownOptions } from '../../Constants/constants';
-import { getInitials } from '../../Utility/contactUtil';
+import { ImagePersona } from '../Universal/ImagePersona';
 
 export const ContactDetailsHeader: React.FC<{
   persona: { name: string; stage: string; image?: string };
@@ -27,79 +26,18 @@ export const ContactDetailsHeader: React.FC<{
   onCancel: () => void;
 }> = (props) => {
   const scSize = useScreenSize();
-  const [coinHovered, setCoinHovered] = React.useState(false);
-  const [fileError, setFileError] = React.useState('Max File Size: 10 MB');
-  const [imageFile, setImageFile] = React.useState<File | null>(null);
-  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-  React.useEffect(() => {
-    setFileError('');
-    if (hiddenFileInput?.current?.value) {
-      hiddenFileInput.current.value = '';
-    }
-  }, [props.persona]);
   return (
     <Stack
       horizontal={scSize.width >= 500}
       tokens={{ childrenGap: scSize.width >= 500 ? '0px' : '20px' }}
     >
       <Stack grow verticalAlign={'center'}>
-        <Persona
+        <ImagePersona
           initialsColor={colors.golden}
-          size={scSize.width >= 1024 ? PersonaSize.size100 : PersonaSize.size72}
           text={props.persona.name}
-          imageAlt={props.persona.name}
           secondaryText={props.persona.stage}
-          onRenderInitials={() => {
-            if (props.persona.image) {
-              // show image via url
-              return <span></span>;
-            } else {
-              const fname = props.persona.name.split(' ')?.[0];
-              const lname = props.persona.name.split(' ')?.[1];
-              return coinHovered ? (
-                <Icon iconName='EditPhoto' />
-              ) : (
-                <span>{getInitials(fname, lname)}</span>
-              );
-            }
-          }}
-          coinProps={{
-            onMouseEnter: () => {
-              setCoinHovered(true);
-            },
-            onMouseLeave: () => {
-              setCoinHovered(false);
-            },
-            styles: {
-              coin: {
-                filter: `brightness(${coinHovered ? '0.75' : '1'})`,
-                cursor: `${coinHovered ? 'pointer' : 'default'}`
-              }
-            },
-            onClick: () => {
-              hiddenFileInput.current?.click();
-            }
-          }}
-        />
-        {fileError && <span style={errorStyle}>{fileError}</span>}
-        <input
-          type='file'
-          style={{ display: 'none' }}
-          ref={hiddenFileInput}
-          accept='image/*,image/heic'
-          onChange={(ev) => {
-            const newFile = ev?.target?.files?.[0];
-            if (newFile) {
-              if (newFile.size > 10485760) {
-                setFileError('Max File Size: 10 MB');
-              } else {
-                setImageFile(newFile);
-                setFileError('');
-              }
-            } else {
-              setFileError('Image upload failed');
-            }
-          }}
+          size={scSize.width >= 1024 ? PersonaSize.size100 : PersonaSize.size72}
+          image={props.persona.image}
         />
       </Stack>
       <Stack tokens={{ childrenGap: '15px' }} verticalAlign={'center'}>
