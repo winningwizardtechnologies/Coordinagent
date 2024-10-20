@@ -14,6 +14,7 @@ import { useScreenSize } from '../../Hooks/useScreenSize';
 import { useAppSelector } from '../../Hooks/useAppRedux';
 import { getInitials } from '../../Utility/contactUtil';
 import { NotificationsSection } from './NotificationsSection';
+import { AccountSection } from './AccountSection';
 
 export const Header: React.FC = () => {
   const scSize = useScreenSize();
@@ -26,6 +27,9 @@ export const Header: React.FC = () => {
 
   const [notificationsOpen, setNotificationsOpen] = React.useState(false);
   const notificationsRef = React.useRef<HTMLDivElement>(null);
+
+  const [accountOpen, setAccountOpen] = React.useState(false);
+  const accountRef = React.useRef<HTMLDivElement>(null);
 
   const unreadNotifications = React.useMemo(() => {
     return notifications.reduce((sum, notif) => {
@@ -145,19 +149,16 @@ export const Header: React.FC = () => {
               </IconButton>
             </div>
           </Stack>
-          <Stack
-            horizontalAlign='center'
-            verticalAlign='center'
-            onClick={() => {
-              console.log('Account');
-            }}
-          >
-            {/* load correct initial from account */}
+          <Stack horizontalAlign='center' verticalAlign='center'>
             <Persona
+              ref={accountRef}
               size={PersonaSize.size48}
               imageInitials={getInitials(account.firstName, account.lastName)}
               styles={{ root: { cursor: 'pointer', width: '48px' } }}
               initialsColor={colors.grayDark}
+              onClick={() => {
+                setAccountOpen(!accountOpen);
+              }}
             />
           </Stack>
         </Stack>
@@ -168,6 +169,13 @@ export const Header: React.FC = () => {
         unreadCount={unreadNotifications}
         dismissAction={() => {
           setNotificationsOpen(false);
+        }}
+      />
+      <AccountSection
+        open={accountOpen}
+        targetRef={accountRef}
+        dismissAction={() => {
+          setAccountOpen(false);
         }}
       />
     </>

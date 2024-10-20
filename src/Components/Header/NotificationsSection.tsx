@@ -66,6 +66,8 @@ export const NotificationsSection: React.FC<{
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintFixed={true}
         onDismiss={props.dismissAction}
+        isBeakVisible={false}
+        gapSpace={5}
         styles={{
           root: { width: scSize.width < 400 ? '300px' : '330px' }
         }}
