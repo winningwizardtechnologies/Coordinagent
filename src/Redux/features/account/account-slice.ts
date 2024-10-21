@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Contact } from '../../../Constants/types';
 
-export type AccountState = Contact;
+export type ThemeType = 'dark' | 'light';
+export type AccountState = Contact & { theme: ThemeType };
 
 const initialState: AccountState = {
   // will be replaced with empty stuff and fetched
@@ -12,7 +13,8 @@ const initialState: AccountState = {
   phone: '123-456-7899',
   dob: '1970-01-01',
   address: '234, West Georgia Street, Vancouver, BC, Canada, V6U 9P8',
-  stage: 'Account'
+  stage: 'Account',
+  theme: 'light'
 };
 
 const accountSlice = createSlice({
@@ -28,6 +30,7 @@ const accountSlice = createSlice({
       state.image = action.payload.image;
       state.phone = action.payload.phone;
       state.stage = action.payload.stage;
+      state.theme = action.payload.theme;
     }
   }
 });
