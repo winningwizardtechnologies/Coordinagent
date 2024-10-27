@@ -136,7 +136,7 @@ export const ContactDetails: React.FC = () => {
       verticalFill
       styles={{
         root: {
-          border: '1px solid lightgray'
+          borderLeft: scSize.width > 850 ? '1px solid lightgray' : 'none'
         }
       }}
     >

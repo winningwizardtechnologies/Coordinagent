@@ -16,12 +16,14 @@ export const Contacts: React.FC = () => {
       <Stack
         horizontalAlign='center'
         verticalFill
-        styles={{
-          root: { marginTop: '25px' }
-        }}
+        styles={
+          {
+            // root: { marginTop: '25px' }
+          }
+        }
       >
         <Stack
-          styles={{ root: { width: scSize.width > 850 ? '90%' : '95%' } }}
+          styles={{ root: { width: '95%' } }}
           tokens={{ childrenGap: '20px' }}
           verticalFill
         >
