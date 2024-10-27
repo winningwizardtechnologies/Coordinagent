@@ -16,7 +16,8 @@ export const ContactList: React.FC = () => {
       <Stack
         styles={{
           root: {
-            border: '1px solid lightgray',
+            // border: '1px solid lightgray',
+            paddingTop: '25px',
             height: '100%'
           }
         }}

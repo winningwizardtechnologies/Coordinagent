@@ -15,8 +15,7 @@ export const MobileNav: React.FC = () => {
           borderTop: '1px solid lightgray',
           position: 'sticky',
           bottom: 0,
-          zIndex: 1,
-          marginTop: '25px'
+          zIndex: 1
         }
       }}
     >
