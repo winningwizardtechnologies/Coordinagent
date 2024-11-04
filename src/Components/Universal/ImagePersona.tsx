@@ -14,6 +14,7 @@ export const ImagePersona: React.FC<{
   styles?: {
     primaryText?: Record<string, string>;
     secondaryText?: Record<string, string>;
+    details?: Record<string, string>;
   };
 }> = (props) => {
   const [coinHovered, setCoinHovered] = React.useState(false);
@@ -51,7 +52,8 @@ export const ImagePersona: React.FC<{
         }}
         styles={{
           primaryText: props.styles?.primaryText,
-          secondaryText: props.styles?.secondaryText
+          secondaryText: props.styles?.secondaryText,
+          details: props.styles?.details
         }}
         coinProps={{
           onMouseEnter: () => {

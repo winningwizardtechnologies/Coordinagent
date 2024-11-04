@@ -8,6 +8,7 @@ import {
 } from '../../Redux/features/contacts/contacts-slice';
 import { useAppDispatch } from '../../Hooks/useAppRedux';
 import { AddContactsDialog } from './AddContactsDialog';
+import { PrimaryIconButton } from '../Universal/PrimaryIconButton';
 
 export const ContactList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,6 @@ export const ContactList: React.FC = () => {
       <Stack
         styles={{
           root: {
-            // border: '1px solid lightgray',
             paddingTop: '25px',
             height: '100%'
           }
@@ -37,17 +37,15 @@ export const ContactList: React.FC = () => {
             />
           </Stack.Item>
           <Stack.Item>
-            <PrimaryButton
+            <PrimaryIconButton
               onClick={() => {
                 dispatch(changeAddContactsDialogOpen(true));
               }}
+              iconName='AddTo'
+              styles={{ iconStyle: { fontSize: '16.5px', marginRight: '3px' } }}
             >
-              <Icon
-                iconName='AddTo'
-                styles={{ root: { fontSize: '16.5px', marginRight: '3px' } }}
-              />
               Add
-            </PrimaryButton>
+            </PrimaryIconButton>
           </Stack.Item>
         </Stack>
         <Stack styles={{ root: { margin: '0px 20px' } }}>

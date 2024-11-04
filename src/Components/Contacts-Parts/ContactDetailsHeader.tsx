@@ -13,6 +13,7 @@ import { colors } from '../../Constants/colors';
 import { StageType } from '../../Constants/types';
 import { errorStyle, stageDropdownOptions } from '../../Constants/constants';
 import { ImagePersona } from '../Universal/ImagePersona';
+import { PrimaryIconButton } from '../Universal/PrimaryIconButton';
 
 export const ContactDetailsHeader: React.FC<{
   persona: { name: string; stage: string; image?: string };
@@ -42,27 +43,22 @@ export const ContactDetailsHeader: React.FC<{
       </Stack>
       <Stack tokens={{ childrenGap: '15px' }} verticalAlign={'center'}>
         {!props.editMode && (
-          <PrimaryButton onClick={props.onEdit}>
-            <Stack horizontal verticalAlign='center'>
-              <Icon
-                iconName='Edit'
-                styles={{
-                  root: {
-                    marginRight: '5px',
-                    paddingTop: '2px',
-                    fontSize: scSize.width >= 1024 ? '16.5px' : '14px'
-                  }
-                }}
-              />
-              <span
-                style={{
-                  fontSize: scSize.width >= 1024 ? '16.5px' : '14px'
-                }}
-              >
-                Edit Contact
-              </span>
-            </Stack>
-          </PrimaryButton>
+          <PrimaryIconButton
+            onClick={props.onEdit}
+            iconName='Edit'
+            styles={{
+              iconStyle: {
+                marginRight: '5px',
+                paddingTop: '2px',
+                fontSize: scSize.width >= 1024 ? '16.5px' : '14px'
+              },
+              textStyle: {
+                fontSize: scSize.width >= 1024 ? '16.5px' : '14px'
+              }
+            }}
+          >
+            Edit Contact
+          </PrimaryIconButton>
         )}
         {props.editMode && (
           <>

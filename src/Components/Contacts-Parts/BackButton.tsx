@@ -11,7 +11,7 @@ export const BackButton: React.FC<{ targetRoute: string }> = (props) => {
     <Stack
       styles={{
         root: {
-          padding: '10px 0px 0px 10px'
+          padding: '10px 0px 20px 0px'
         }
       }}
     >

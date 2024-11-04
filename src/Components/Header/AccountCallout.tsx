@@ -13,10 +13,10 @@ import { getContactFullName, getInitials } from '../../Utility/contactUtil';
 import { colors } from '../../Constants/colors';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useAppRedux';
 import { ImagePersona } from '../Universal/ImagePersona';
-import { SectionItem } from '../Universal/SectionItem';
+import { CalloutSectionItem } from '../Universal/CalloutSectionItem';
 import { changeAccountDetails } from '../../Redux/features/account/account-slice';
 
-export const AccountSection: React.FC<{
+export const AccountCallout: React.FC<{
   open: boolean;
   targetRef: React.RefObject<HTMLDivElement>;
   dismissAction: () => void;
@@ -85,7 +85,7 @@ export const AccountSection: React.FC<{
               checked={account.theme === 'dark'}
             />
           </Stack>
-          <SectionItem
+          <CalloutSectionItem
             onClick={() => {
               window.open('/account', '_blank', 'rel=noopener noreferrer');
             }}
@@ -97,15 +97,15 @@ export const AccountSection: React.FC<{
               iconName='OpenInNewWindow'
               styles={{ root: { marginLeft: '8px', fontSize: '18px' } }}
             />
-          </SectionItem>
-          <SectionItem
+          </CalloutSectionItem>
+          <CalloutSectionItem
             onClick={() => {}}
             hoverBackground={colors.grayLighter}
             hoverColor={colors.green}
           >
             <span>Sign Out</span>
             <Icon iconName='SignOut' styles={{ root: { marginLeft: '8px' } }} />
-          </SectionItem>
+          </CalloutSectionItem>
         </FocusTrapZone>
       </Callout>
     )

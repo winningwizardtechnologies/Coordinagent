@@ -14,7 +14,7 @@ import { useScreenSize } from '../../Hooks/useScreenSize';
 import { useAppSelector } from '../../Hooks/useAppRedux';
 import { getInitials } from '../../Utility/contactUtil';
 import { NotificationsSection } from './NotificationsSection';
-import { AccountSection } from './AccountSection';
+import { AccountCallout } from './AccountCallout';
 
 export const Header: React.FC = () => {
   const scSize = useScreenSize();
@@ -171,7 +171,7 @@ export const Header: React.FC = () => {
           setNotificationsOpen(false);
         }}
       />
-      <AccountSection
+      <AccountCallout
         open={accountOpen}
         targetRef={accountRef}
         dismissAction={() => {

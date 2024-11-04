@@ -13,15 +13,7 @@ export const Contacts: React.FC = () => {
   const match = useMatch('/contacts/:id');
   return (
     <>
-      <Stack
-        horizontalAlign='center'
-        verticalFill
-        styles={
-          {
-            // root: { marginTop: '25px' }
-          }
-        }
-      >
+      <Stack horizontalAlign='center' verticalFill>
         <Stack
           styles={{ root: { width: '95%' } }}
           tokens={{ childrenGap: '20px' }}
